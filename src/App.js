@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import './App.css'
+import HeartButton from './Components/heartButton';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Router } from "react-router";
+
 
 class App extends Component {
     state = {
         likeCount: 0,
-        heart: "heart",
         artists: [
             {
                 id: 0,
@@ -33,16 +36,11 @@ class App extends Component {
 
     increaseLikesCount = () => this.setState(prevState => ({ likeCount: prevState.likeCount++}));
 
-    likeClick = e => (this.setState(prevState => ({ heart: "redHeart" })));
-
-    // likeClick = e => {
-    //     // e.preventDefault();
-    //     this.setState(prevState => (e.target.style.color = 'red'))
-    // }
-
     render() {
         return (
             <main>
+  
+
               <div>
                 <h1>Our favourite artists:</h1>
               </div>
@@ -52,7 +50,7 @@ class App extends Component {
                         <h4>{this.state.artists[0].name}</h4>
                       <p>{this.state.artists[0].intro}</p>
                         <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
-                    <p id={this.state.heart} onClick={this.likeClick}>&hearts;</p>
+                        <p> <span><HeartButton/></span> </p>
                     </div>
                 </div>
 
@@ -62,7 +60,7 @@ class App extends Component {
                     <h4><b>{this.state.artists[1].name}</b></h4>
                     <p>{this.state.artists[1].intro}</p>
                     <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
-                    <p id={this.state.heart} onClick={this.likeClick}>&hearts;</p>
+                    <p> <span><HeartButton/></span> </p>
                   </div>
               </div>
 
@@ -72,7 +70,7 @@ class App extends Component {
                     <h4><b>{this.state.artists[2].name}</b></h4>
                     <p>{this.state.artists[2].intro}</p>
                     <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
-                    <p id="heart" onClick={this.likeClick}>&hearts;</p>
+                    <p> <span><HeartButton/></span> </p>
                   </div>
               </div>
             </main>
