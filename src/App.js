@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import './App.css'
 
 class App extends Component {
     state = {
-        favArtists: 'Our favourite artists: ',
         likeCount: 0,
+        heart: "heart",
         artists: [
             {
                 id: 0,
                 name:'A$AP Rocky',
                 album: 'At.Long.Last.A$AP',
-                img: 'https://media.pitchfork.com/photos/5929aea713d197565213a144/1:1/w_600/ce403a0f.jpg',
+                img: 'https://m.media-amazon.com/images/I/61V2QAu-DDL._AA256_.jpg',
                 intro: 'Rakim Athelaston Nakache Mayers, known professionally as ASAP Rocky, is an American rapper, singer, songwriter, record producer, model, actor, and music video director. He is a member of the hip hop collective A$AP Mob, from which he adopted his moniker.'
             },
             {
                 id: 1,
                 name: 'Kanye West',
                 album: 'The Life of Pablo',
-                img: 'https://media.pitchfork.com/photos/5929b3995e6ef9596932249e/1:1/w_320/1192269b.jpg" alt="The Life of Pablo album cover',
+                img: 'https://m.media-amazon.com/images/I/61T7zWjf4JL._AA256_.jpg',
                 intro: 'The Life of Pablo is the seventh studio album by American rapper and producer Kanye West. It was released on February 14, 2016, through GOOD Music and distributed by Def Jam Recordings. Recording sessions took place from 2013 to 2016, in Italy, Mexico, Canada, and the United States.'
             },
             {   
                 id: 2,
                 name: 'Kendrick Lamar',
                 album: 'DAMN',
-                img: 'https://media.pitchfork.com/photos/5929b3995e6ef9596932249e/1:1/w_320/1192269b.jpg',
+                img: 'https://i.pinimg.com/originals/06/87/02/068702c3905e79d3c86543537f062903.jpg',
                 intro: 'Damn is the fourth studio album by American rapper Kendrick Lamar. It was released on April 14, 2017, through Top Dawg Entertainment, distributed by Aftermath Entertainment and Interscope Records.'
             }
         ]
@@ -33,34 +33,46 @@ class App extends Component {
 
     increaseLikesCount = () => this.setState(prevState => ({ likeCount: prevState.likeCount++}));
 
+    likeClick = e => (this.setState(prevState => ({ heart: "redHeart" })));
+
+    // likeClick = e => {
+    //     // e.preventDefault();
+    //     this.setState(prevState => (e.target.style.color = 'red'))
+    // }
+
     render() {
         return (
             <main>
               <div>
-                <h1>{favArtists}</h1>
+                <h1>Our favourite artists:</h1>
               </div>
                 <div className="card">
-                    <img src={artists[0].img} alt={artists[0].name} />
+                    <img src={this.state.artists[0].img} alt={this.state.artists[0].name} />
                     <div className="container">
-                        <h4>{artists[0].name}</h4>
-                      <p>{artists[0].intro}</p>
-                      <button onClick ></button>
+                        <h4>{this.state.artists[0].name}</h4>
+                      <p>{this.state.artists[0].intro}</p>
+                        <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
+                    <p id={this.state.heart} onClick={this.likeClick}>&hearts;</p>
                     </div>
                 </div>
 
               <div className="card">
-                  <img src={artists[1].img} alt={artists[1].name} />
+                  <img src={this.state.artists[1].img} alt={this.state.artists[1].name} />
                   <div className="container">
-                    <h4><b>{artists[1].name}</b></h4>
-                    <p>{artists[1].intro}</p>
+                    <h4><b>{this.state.artists[1].name}</b></h4>
+                    <p>{this.state.artists[1].intro}</p>
+                    <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
+                    <p id={this.state.heart} onClick={this.likeClick}>&hearts;</p>
                   </div>
               </div>
 
               <div className="card">
-                  <img src={artists[2].img} alt={artists[2].name} />
+                  <img src={this.state.artists[2].img} alt={this.state.artists[2].name} />
                   <div className="container">
-                    <h4><b>{artists[2].name}</b></h4>
-                    <p>{artists[2].intro}</p>
+                    <h4><b>{this.state.artists[2].name}</b></h4>
+                    <p>{this.state.artists[2].intro}</p>
+                    <button onClick={this.increaseLikesCount}>Likes:{this.state.likeCount}</button>
+                    <p id="heart" onClick={this.likeClick}>&hearts;</p>
                   </div>
               </div>
             </main>
@@ -68,6 +80,8 @@ class App extends Component {
     }
   }
   
+
+  export default App;
 ReactDOM.render(
   <App />,
   document.getElementById('root')
