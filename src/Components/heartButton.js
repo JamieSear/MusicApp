@@ -10,7 +10,7 @@ class HeartButton extends Component {
 
     render() {
         return (
-        <span onClick={this.handleFave} style={{ "font-size": "27px", color: `${ this.state.faved ? "red" : "black" }` }}>&hearts;</span>
+        <span onClick={this.handleFave} style={{ "fontSize": "40px", color: `${ this.state.faved ? "red" : "black" }` }}>&hearts;</span>
         );
     }
 }

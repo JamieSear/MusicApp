@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/index.js', // the main JavaScript file of the app/project
   output: { // instructions for compiling the code
     path: path.resolve('dist'), // the file where the compiled code should go
-    filename: 'bundle.js' // the file name of the compiled code
+    filename: 'bundle.js', // the file name of the compiled code
+    publicPath: "/"
   },
   devtool: 'source-maps', // a tool to find errors in the compiled code, but show them against the source code for easier debugging
   module: { // modules/helpers we want Webpack to use
@@ -22,7 +23,8 @@ module.exports = {
     hot: true, // refresh the browser when changes are saved
     open: true, // open the app/project in the browser when the server starts
     port: 8000, // use this port for the server
-    watchContentBase: true // watch for changes to static files
+    watchContentBase: true, // watch for changes to static files
+    historyApiFallback: true
   },
   plugins: [ // plugins we are using
     new webpack.HotModuleReplacementPlugin(), // update changed modules without page reload
